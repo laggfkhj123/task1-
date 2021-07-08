@@ -1,0 +1,61 @@
+#include <Servo.h>
+
+Servo x1;
+Servo x2;
+Servo x3;
+Servo x4;
+Servo x5;
+int r1,r2,r3,r4,r5;
+
+
+
+
+void setup()
+{
+ 
+  
+  x1.attach(11);
+  x2.attach(10);
+  x3.attach(9);
+  x4.attach(6);
+  x5.attach(5);
+  
+  x1.write(90);  //starts at 90 degree
+  x2.write(90);
+  x3.write(90);
+  x4.write(90);
+  x5.write(90);
+  delay(5000);
+  
+  
+  
+  pinMode(A0,INPUT); // for resistores
+  pinMode(A1,INPUT);
+  pinMode(A2,INPUT);
+  pinMode(A3,INPUT);
+  pinMode(A4,INPUT);
+}
+
+void loop()
+{
+  
+  r1=analogRead(A0);
+  r2=analogRead(A1);
+  r3=analogRead(A2);
+  r4=analogRead(A3);
+  r5=analogRead(A4);
+  
+  r1=map(r1,0,1023,0,180);
+  r2=map(r2,0,1023,0,180);
+  r3=map(r3,0,1023,0,180);
+  r4=map(r4,0,1023,0,180);
+  r5=map(r5,0,1023,0,180);
+ 
+ 
+  
+  x1.write(r1);//reading the value from servo
+  x2.write(r2);
+  x3.write(r3);
+  x4.write(r4);
+  x5.write(r5);
+}
